@@ -1,0 +1,20 @@
+{
+  "name": "WaiRes-API",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevindussan3/WaiRes-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevindussan3/WaiRes-API/issues"
+  },
+  "homepage": "https://github.com/kevindussan3/WaiRes-API#readme"
+}
