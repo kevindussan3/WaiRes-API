@@ -1,9 +1,10 @@
 import { mongo } from 'mongoose';
 import Mesa from '../models/Mesa';
 import QRCode from 'qrcode';
-
+const assetsFolder = '../../public/assets/'
 
 export const create = async (req, res) => {
+
     const { numero } = req.body;
 
     try {
@@ -79,6 +80,8 @@ export const deleteOne = async (req, res) => {
 async function generarCodigoQR(data) {
     try {
         const nombreArchivo = `codigo_qr_${data}.png`;
+        console.log('nombreArchivo', nombreArchivo)
+        console.log('assetsFolder', assetsFolder)
         const rutaCompleta = path.join(assetsFolder, nombreArchivo);
 
         // Asegurarse de que la carpeta "assets" exista
