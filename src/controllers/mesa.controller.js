@@ -1,7 +1,9 @@
 import { mongo } from 'mongoose';
 import Mesa from '../models/Mesa';
 import QRCode from 'qrcode';
-const assetsFolder = '../../public/assets/'
+const assetsFolder = 'public/assets/'
+const path = require('path');
+import fs from 'fs/promises';
 
 export const create = async (req, res) => {
 
@@ -12,7 +14,8 @@ export const create = async (req, res) => {
             numero,
         });
         const mesaSaved = await newMesa.save();
-        const codigoQR = await generarCodigoQR(mesaSaved._id.toString());
+        // const codigoQR = await generarCodigoQR(mesaSaved._id.toString());
+        const codigoQR = await generarCodigoQR();
         mesaSaved.codigoQR = codigoQR;
         await mesaSaved.save();
         res.status(201).json(mesaSaved);
@@ -83,6 +86,7 @@ async function generarCodigoQR(data) {
         console.log('nombreArchivo', nombreArchivo)
         console.log('assetsFolder', assetsFolder)
         const rutaCompleta = path.join(assetsFolder, nombreArchivo);
+        console.log('rutaCompleta', rutaCompleta)
 
         // Asegurarse de que la carpeta "assets" exista
         await fs.mkdir(assetsFolder, { recursive: true });
